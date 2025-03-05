@@ -1,81 +1,156 @@
-Homzes App
+# Homzes App
 
-Overview
-Homzes is a modern mobile application built with Flutter, designed to help users find and explore rental and sale properties. The platform provides an intuitive interface for browsing property listings, searching, and managing favorites, leveraging Firebase for backend services and BLoC for state management. It follows Clean Architecture principles for maintainability and scalability.
+## Overview
+Homzes is a modern mobile application built with Flutter, designed to help users find and explore rental and sale properties. The app features a clean, intuitive interface for browsing properties, searching, and managing favorites, leveraging Firebase for backend services and BLoC for state management. It follows Clean Architecture principles for maintainability and scalability.
 
-Features
-Browse featured and new property listings with detailed information and high-quality images.
-Search for properties using a user-friendly search bar.
-View detailed property information, including location, price, beds, and bathrooms.
-Mark properties as favorites with a heart icon.
-Navigate between screens with smooth slide animations.
-Real-time data synchronization using Firebase Firestore and Storage.
-Responsive design for mobile devices.
+## Features
+- Browse featured and new property listings.
+- Search for properties with a user-friendly search bar.
+- View detailed property information, including images, location, price, beds, and bathrooms.
+- Mark properties as favorites with a heart icon.
+- Navigate between screens with smooth slide animations.
+- Real-time data synchronization using Firebase Firestore and Storage.
+- Responsive design for mobile devices.
 
+## Technologies Used
+- **Flutter**: Cross-platform framework for building the UI.
+- **Firebase**:
+  - Firestore: For real-time database management of properties.
+  - Storage: For hosting and serving property images.
+  - Authentication: For user authentication (optional, if implemented).
+- **BLoC**: For state management following Clean Architecture.
+- **GoRouter**: For declarative navigation with custom transitions.
+- **Google Fonts**: For consistent typography (Roboto Flex).
+- **Dart**: The programming language for Flutter.
 
-Tech Stack
-Flutter: Cross-platform framework for building the UI.
-Firebase:
-Firestore: For real-time database management of properties.
-Storage: For hosting and serving property images.
-Authentication: For user authentication (optional, if implemented).
-BLoC: For state management following Clean Architecture.
-GoRouter: For declarative navigation with custom transitions.
-Google Fonts: For consistent typography (Roboto Flex).
-Dart: The programming language for Flutter.
-Project Structure
-
-
-
-Copy
-Homzes-App/
-├── lib/                  # Flutter Dart code
-│   ├── core/             # Utilities (e.g., colors, widgets, inject)
-│   │   ├── config/       # Configuration files (e.g., app_colors.dart)
-│   │   ├── widgets/      # Reusable widgets (e.g., buttons.dart)
-│   │   └── inject.dart   # Dependency injection
-│   ├── feature/          # Feature-specific code
-│   │   └── home/         # Home feature
-│   │       ├── data/     # Data sources and repositories
-│   │       ├── domain/   # Entities and use cases
-│   │       ├── presentation/ # BLoC, screens, and widgets
-│   │       └── bloc/     # BLoC implementations
-│   └── main.dart         # App entry point
-├── assets/               # Static assets (e.g., images)
-├── pubspec.yaml          # Flutter project configuration and dependencies
-├── .gitignore            # Git ignore file
-└── README.md             # Project documentation (this file)
-
-
-Getting Started
-Prerequisites
+## Prerequisites
 Before you begin, ensure you have the following installed:
 
-Flutter SDK: Version 3.0.0 or higher (check flutter --version).
-Dart: Included with Flutter.
-Firebase CLI: For managing Firebase projects (npm install -g firebase-tools).
-Android Studio/XCode: For Android/iOS development.
-Git: For cloning the repository.
-Installation
-Clone the repository:
-bash
+- Flutter SDK: Version 3.0.0 or higher (check `flutter --version`).
+- Dart: Included with Flutter.
+- Firebase CLI: For managing Firebase projects (`npm install -g firebase-tools`).
+- Android Studio/XCode: For Android/iOS development.
+- Node.js: For Firebase CLI (optional, if deploying Firebase rules).
+- Git: For cloning the repository.
 
+## Project Structure
+
+```
+Homzes-App/
+├── client/                            # Flutter application
+│   ├── android/                       # Android-specific files
+│   ├── ios/                           # iOS-specific files
+│   ├── lib/                           # Dart source code
+│   │   ├── core/                      # Core utilities
+│   │   │   ├── app_colors.dart        # App color constants
+│   │   │   └── home_di.dart           # Dependency injection
+│   │   ├── data/                      # Data layer
+│   │   │   ├── home_data_source.dart  # Firebase data sources
+│   │   │   └── home_repository_impl.dart # Repository implementations
+│   │   ├── domain/                    # Domain layer
+│   │   │   ├── entities/              # Business models
+│   │   │   │   └── property.dart      # Property entity
+│   │   │   └── usecases/              # Business logic
+│   │   │       └── fetch_properties.dart # Use case for fetching properties
+│   │   ├── presentation/              # Presentation layer
+│   │   │   ├── bloc/                  # BLoC state management
+│   │   │   │   └── home_bloc.dart     # Home screen BLoC
+│   │   │   ├── screens/               # App screens
+│   │   │   │   ├── welcome_screen.dart # Welcome screen
+│   │   │   │   ├── home_screen.dart   # Home screen
+│   │   │   │   └── search_catalog_3.dart # Search catalog screen
+│   │   │   └── widgets/               # Reusable UI components
+│   │   │       ├── buttons.dart       # Button components
+│   │   │       └── service_card_widget.dart # Service card widget
+│   │   └── main.dart                  # App entry point
+│   ├── pubspec.yaml                   # Flutter dependencies
+│   └── assets/                        # App assets (images, fonts)
+├── server/                            # Backend services (Firebase)
+│   ├── firestore/                     # Firestore configurations
+│   │   └── rules/                     # Firestore security rules
+│   └── storage/                       # Firebase Storage configurations
+│       └── rules/                     # Storage security rules
+├── .gitignore                         # Git ignore file
+├── firebase.json                      # Firebase configuration
+└── README.md                          # Project documentation (this file)
+```
+
+## Installation
+
+### 1. Clone the Repository
+```bash
 git clone https://github.com/Mhmd-SHA/Homzes-App.git
 cd Homzes-App
+```
 
-Install dependencies:
-
+### 2. Install Dependencies
+Run the following command to install Flutter dependencies:
+```bash
+cd client
 flutter pub get
-Set Up Firebase:
-Create a Firebase project in the Firebase Console.
-Enable Firestore and Storage in your Firebase project.
+```
 
+### 3. Set Up Firebase
+- Create a Firebase project in the Firebase Console.
+- Enable Firestore and Storage in your Firebase project.
+- Download the google-services.json (Android) and GoogleService-Info.plist (iOS) files and place them in the appropriate directories:
+  - Android: client/android/app/
+  - iOS: client/ios/Runner/
+- Configure Firebase Storage rules (optional, for public access during development):
+```json
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read: if request.auth != null; // Or allow public read for testing
+      allow write: if request.auth != null;
+    }
+  }
+}
+```
+- Deploy rules using Firebase CLI:
+```bash
+firebase deploy --only storage
+```
 
+### 4. Set Up Environment Variables
+If you use environment variables (e.g., for Firebase or API keys), create a .env file in the client directory and add your configuration. Ensure you ignore .env in .gitignore.
+
+### 5. Run the App
+Run the app on an emulator or physical device:
+```bash
+cd client
 flutter run
+```
 
-License
+## Usage
+- Launch the app to see the WelcomeScreen with property listings and service cards (Rent, Buy, Sell).
+- Navigate to the HomeScreen (Search & Catalog 1) by tapping "Create an account" to browse featured and new property offers.
+- Use the search bar to find properties, and tap "View all" to navigate to SearchCatalog3Screen with a slide animation.
+- Interact with property cards, including marking favorites with the heart icon.
+
+## Contributing
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your commit message"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a Pull Request on GitHub.
+
+## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Acknowledgements
-Thanks to the Flutter and Firebase communities for their tools and documentation.
-Inspiration from Figma designs and real estate app concepts.
+## Acknowledgments
+- Thanks to the Flutter and Firebase communities for their tools and documentation.
+- Inspiration from Figma designs and real estate app concepts.
+
+## Contact
+For questions or feedback, contact Mhmd-SHA or open an issue on GitHub.
