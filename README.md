@@ -1,3 +1,7 @@
+
+[![Download App](https://img.shields.io/badge/Download-App-blue.svg)](https://github.com/Mhmd-SHA/Homzes-App/releases/latest](https://github.com/Mhmd-SHA/Homzes-App/releases/download/V1.0.0/Homzes.App-release.apk))
+
+
 # Homzes App
 
 ## Overview
