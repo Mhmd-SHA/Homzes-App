@@ -1,4 +1,5 @@
 Homzes App
+
 Overview
 Homzes is a modern mobile application built with Flutter, designed to help users find and explore rental and sale properties. The platform provides an intuitive interface for browsing property listings, searching, and managing favorites, leveraging Firebase for backend services and BLoC for state management. It follows Clean Architecture principles for maintainability and scalability.
 
@@ -10,6 +11,8 @@ Mark properties as favorites with a heart icon.
 Navigate between screens with smooth slide animations.
 Real-time data synchronization using Firebase Firestore and Storage.
 Responsive design for mobile devices.
+
+
 Tech Stack
 Flutter: Cross-platform framework for building the UI.
 Firebase:
@@ -21,11 +24,8 @@ GoRouter: For declarative navigation with custom transitions.
 Google Fonts: For consistent typography (Roboto Flex).
 Dart: The programming language for Flutter.
 Project Structure
-text
 
-Collapse
 
-Unwrap
 
 Copy
 Homzes-App/
@@ -45,6 +45,8 @@ Homzes-App/
 ├── pubspec.yaml          # Flutter project configuration and dependencies
 ├── .gitignore            # Git ignore file
 └── README.md             # Project documentation (this file)
+
+
 Getting Started
 Prerequisites
 Before you begin, ensure you have the following installed:
@@ -58,93 +60,19 @@ Installation
 Clone the repository:
 bash
 
-Collapse
-
-Unwrap
-
-Copy
 git clone https://github.com/Mhmd-SHA/Homzes-App.git
 cd Homzes-App
+
 Install dependencies:
-bash
 
-Collapse
-
-Unwrap
-
-Copy
 flutter pub get
 Set Up Firebase:
 Create a Firebase project in the Firebase Console.
 Enable Firestore and Storage in your Firebase project.
-Download the google-services.json (Android) and GoogleService-Info.plist (iOS) files and place them in the appropriate directories:
-Android: android/app/
-iOS: ios/Runner/
-Configure Firebase Storage rules (optional, for public access during development):
-json
 
-Collapse
 
-Unwrap
-
-Copy
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read: if request.auth != null; // Or allow public read for testing
-      allow write: if request.auth != null;
-    }
-  }
-}
-Deploy rules using Firebase CLI:
-bash
-
-Collapse
-
-Unwrap
-
-Copy
-firebase deploy --only storage
-Run the App:
-bash
-
-Collapse
-
-Unwrap
-
-Copy
 flutter run
-Contributing
-Fork the repository.
-Create a new branch for your feature or bug fix:
-bash
 
-Collapse
-
-Unwrap
-
-Copy
-git checkout -b feature/your-feature-name
-Make your changes and commit them:
-bash
-
-Collapse
-
-Unwrap
-
-Copy
-git commit -m "Add your commit message"
-Push to the branch:
-bash
-
-Collapse
-
-Unwrap
-
-Copy
-git push origin feature/your-feature-name
-Open a Pull Request on GitHub.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
