@@ -19,7 +19,6 @@ Homzes is a modern mobile application built with Flutter, designed to help users
   - Storage: For hosting and serving property images.
   - Authentication: For user authentication (optional, if implemented).
 - **BLoC**: For state management following Clean Architecture.
-- **GoRouter**: For declarative navigation with custom transitions.
 - **Google Fonts**: For consistent typography (Roboto Flex).
 - **Dart**: The programming language for Flutter.
 
@@ -96,27 +95,9 @@ flutter pub get
 - Download the google-services.json (Android) and GoogleService-Info.plist (iOS) files and place them in the appropriate directories:
   - Android: client/android/app/
   - iOS: client/ios/Runner/
-- Configure Firebase Storage rules (optional, for public access during development):
-```json
-rules_version = '2';
-service firebase.storage {
-  match /b/{bucket}/o {
-    match /{allPaths=**} {
-      allow read: if request.auth != null; // Or allow public read for testing
-      allow write: if request.auth != null;
-    }
-  }
-}
-```
-- Deploy rules using Firebase CLI:
-```bash
-firebase deploy --only storage
-```
 
-### 4. Set Up Environment Variables
-If you use environment variables (e.g., for Firebase or API keys), create a .env file in the client directory and add your configuration. Ensure you ignore .env in .gitignore.
 
-### 5. Run the App
+### 4. Run the App
 Run the app on an emulator or physical device:
 ```bash
 cd client
