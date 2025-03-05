@@ -1,0 +1,2 @@
+/home/sha/Desktop/FLUTTER PROJECTS/homzes_app/android/app/.cxx/Debug/e584xic6/arm64-v8a/CMakeFiles/edit_cache.dir
+/home/sha/Desktop/FLUTTER PROJECTS/homzes_app/android/app/.cxx/Debug/e584xic6/arm64-v8a/CMakeFiles/rebuild_cache.dir
