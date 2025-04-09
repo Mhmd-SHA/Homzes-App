@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homzes_app/feature/home/presentation/bloc/home_bloc.dart'; // Adjust the import path as needed
@@ -245,7 +246,7 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: NetworkImage(
+                image: CachedNetworkImageProvider(
                   property.image,
                 ),
                 fit: BoxFit.cover,
@@ -293,15 +294,13 @@ class HomeScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.vertical(
                     top: Radius.circular(16), bottom: Radius.circular(16)),
-                child: Image.network(
-                  property.image,
+                child: CachedNetworkImage(
+                  imageUrl: property.image,
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(Icons.image_not_supported,
-                        color: AppColors.dark40);
-                  },
+                  errorWidget: (context, url, error) =>
+                      Icon(Icons.image_not_supported, color: AppColors.dark40),
                 ),
               ),
               Positioned(

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -83,16 +84,14 @@ class SearchCatalog1Screen extends StatelessWidget {
                                       borderRadius: BorderRadius.vertical(
                                           bottom: Radius.circular(20),
                                           top: Radius.circular(20)),
-                                      child: Image.network(
-                                        property.image,
+                                      child: CachedNetworkImage(
+                                        imageUrl: property.image,
                                         height: 200,
                                         width: double.infinity,
                                         fit: BoxFit.cover,
-                                        errorBuilder:
-                                            (context, error, stackTrace) {
-                                          return Icon(Icons.image_not_supported,
-                                              color: AppColors.dark40);
-                                        },
+                                        errorWidget: (context, url, error) =>
+                                            Icon(Icons.image_not_supported,
+                                                color: AppColors.dark40),
                                       ),
                                     ),
                                   ),
