@@ -26,7 +26,10 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -50,19 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCKNpActdJQreSXMyqJs3WvtzaAdlP3nVU',
-    appId: '1:105581468706:android:0f8512de17c89042e63e7b',
-    messagingSenderId: '105581468706',
-    projectId: 'homzes-f0d3e',
-    storageBucket: 'homzes-f0d3e.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCT5z4kXw6L1PW6Jex14INdjGPpDqqy3G0',
-    appId: '1:105581468706:ios:baa41e7ee6601218e63e7b',
-    messagingSenderId: '105581468706',
-    projectId: 'homzes-f0d3e',
-    storageBucket: 'homzes-f0d3e.firebasestorage.app',
-    iosBundleId: 'com.example.homzesApp',
+    apiKey: 'AIzaSyBsvrXx9BSyx4XWP-MnWrBZ8pLjJlWaGFE',
+    appId: '1:273147955263:android:8cb10d9f94fe63a01a508a',
+    messagingSenderId: '273147955263',
+    projectId: 'homzes-d8382',
+    storageBucket: 'homzes-d8382.firebasestorage.app',
   );
 }
